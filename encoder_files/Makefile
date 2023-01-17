@@ -58,4 +58,4 @@ fclean: clean
 re: fclean all
 
 valgrind: re
-	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) file file2 file3
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) file1 file2

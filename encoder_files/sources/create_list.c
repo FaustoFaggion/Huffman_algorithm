@@ -1,20 +1,5 @@
 #include "encoder.h"
 
-
-void	free_list(t_list *leafs) {
-
-	node *aux = leafs->start;
-	node *aux2;;
-	
-	while (aux->next != NULL){
-		aux2 = aux;
-		aux = aux->next;
-		free(aux2);
-	}
-	free(aux);
-}
-
-
 static void	init_list(t_list *leafs)
 {
 	leafs->start = NULL;
@@ -50,7 +35,9 @@ static void	fill_list(t_data *data)
 		new = malloc(sizeof(node));
 		if (new == NULL) {
 			printf("malloc Error!!!!");
-			return;
+			if (&(data->leafs) != NULL)
+			free_list(&(data->leafs));
+			exit(-1);
 		}
 		else {
 			new->character = data->ascii_char[i];
