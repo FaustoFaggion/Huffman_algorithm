@@ -280,8 +280,12 @@ void Preorder(struct Node* node)
 <hr/>
 <br/>
 
-<p>best use for deleteting or freeing nodes. Can delete or free an entire 
-binary tree.</p>
+<p>best use:</p> 
+<ul>
+<li>for deleteting or freeing nodes. Can delete or free an entire 
+binary tree.</li>
+<li>Verify the height of the tree</li>
+</ul>
 <p>It can also generate a postfix expression</p>
 <ul>
 <li>Traverse the left subtree; call Postorder(left->subtree)</li>
@@ -741,6 +745,9 @@ postorder/</p>
 <p>https://www.freecodecamp.org/news/binary-search-tree-traversal-inorder-preorder-post-order-for-bst/</p>
 <p>https://www.youtube.com/watch?v=gm8DUJJhmY4</p>
 <p>https://www.youtube.com/watch?v=BHB0B1jFKQc</p>
+
+#### Binary tree height
+<p>https://www.youtube.com/watch?v=_pnqMz5nrRs</p>
 
 #### BItwise
 <hr/>

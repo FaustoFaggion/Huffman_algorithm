@@ -13,7 +13,8 @@ static void	free_dic(char ***dic) {
 	free(*dic);
 }
 
-static int	tree_hight(node *root)
+/*The number of nodes in the longest path from root to a leaf node*/
+static int	tree_height(node *root)
 {
 	int	left;
 	int	right;
@@ -21,8 +22,8 @@ static int	tree_hight(node *root)
 	if (root == NULL)
 		return (-1);
 	else {
-		left = tree_hight(root->left) + 1;
-		right = tree_hight(root->right) + 1;
+		left = tree_height(root->left) + 1;
+		right = tree_height(root->right) + 1;
 		if (left > right)
 			return (left);
 		else
@@ -77,7 +78,7 @@ char	**make_dictionary(t_data *data)
 	int		columns;
 	char	**dic = NULL;
 
-	columns = tree_hight(data->tree) + 1;
+	columns = tree_height(data->tree) + 1;
 	dic = dictionary_malloc(columns, data);
 	generate_dictionary(dic, data->tree, "", columns);
 	return (dic);
