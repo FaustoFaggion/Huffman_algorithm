@@ -120,6 +120,8 @@ char	*share_memory(char *c_data, int data_size,
 		txt_size++;
 	}
 	txt = ft_calloc(txt_size + 1, sizeof(char));
+	if (txt == NULL)
+		free_data(data, data_info);
 	memcpy(txt, block_txt, txt_size * sizeof(char));
 	detach_memory_block(block_txt, 7);
 	destroy_memory_block(FILENAME, 7);

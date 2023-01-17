@@ -1,5 +1,11 @@
 #include "encoder.h"
 
+static void	init_structs(t_data *data, t_return *data_info)
+{
+	ft_bzero(data, 1 * sizeof(data));
+	ft_bzero(data_info, 1 * sizeof(data_info));
+}
+
 void	open_file(int *fd, char *filename)
 {
 	*fd = open(filename, O_RDONLY);
@@ -42,6 +48,7 @@ int main (int argc, char *argv[])
 
 	check_arguments(argc, argv);
 
+	init_structs(&data, &data_info);
 	/*GET FREQUENCY OF CHARACTERS*/
 	fill_and_sort_ascii(argc, argv, &data);
 	
