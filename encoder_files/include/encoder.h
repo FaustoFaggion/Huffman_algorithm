@@ -81,6 +81,10 @@ void	open_file(int *fd, char *filename);
 
 void	free_list(t_list *leafs);
 
+void	delete_tree(node* node);
+
+void	delete_dictionary(char **dictionary);
+
 void	free_data(t_data *data, t_return *data_info);
 
 void	print_struct_data(t_data *data, char *c_data, int data_size);

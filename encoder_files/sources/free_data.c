@@ -8,7 +8,10 @@ void	free_list(t_list *leafs) {
 	while (aux->next != NULL){
 		aux2 = aux;
 		aux = aux->next;
-		free(aux2);
+		if (aux->left != NULL && aux->right != NULL)
+			delete_tree(aux2);
+		else
+			free(aux2);
 	}
 	free(aux);
 }

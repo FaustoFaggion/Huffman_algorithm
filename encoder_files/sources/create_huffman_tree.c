@@ -47,7 +47,10 @@ node	*create_huffman_tree(t_list *leafs)
 		new = malloc(sizeof(node));
 		if (new == NULL) {
 			printf("malloc Error!!!!");
-			break;
+			delete_tree(first);
+			delete_tree(second);
+			free_list(leafs);
+			exit(-1);
 		}
 		else {
 			new->character = '-';
