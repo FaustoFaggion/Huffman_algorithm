@@ -1,5 +1,18 @@
 #include "encoder.h"
 
+static void	free_dic(char ***dic) {
+
+	int	i;
+
+	i = 0;
+	while ((*dic)[i] != NULL)
+	{
+		free((*dic)[i]);
+		i++;
+	}
+	free(*dic);
+}
+
 static int	tree_hight(node *root)
 {
 	int	left;
@@ -17,17 +30,22 @@ static int	tree_hight(node *root)
 	}
 }
 
-static char	**dictionary_malloc(int columns)
+static char	**dictionary_malloc(int columns, t_data *data)
 {
 	char	**dic;
 
 	if (columns == 1)
 		columns = 2;
 	dic = malloc(sizeof(char *) * EXTEND_ASCII_SIZE);
-	if (dic == NULL)
+	if (dic == NULL){
+		delete_tree(data->tree);
 		exit(2);
-	for (int i = 0; i < 256; i++)
+	}
+	for (int i = 0; i < 256; i++){
 		dic[i] = ft_calloc(columns, sizeof(char));
+		if (dic[i] == NULL)
+			free_dic(&dic);
+	}
 	return (dic);
 }
 
@@ -54,13 +72,13 @@ static void	generate_dictionary(char **dic, node *root, char *path, int columns)
 	}
 }
 
-char	**make_dictionary(node *tree)
+char	**make_dictionary(t_data *data)
 {
 	int		columns;
 	char	**dic = NULL;
 
-	columns = tree_hight(tree) + 1;
-	dic = dictionary_malloc(columns);
-	generate_dictionary(dic, tree, "", columns);
+	columns = tree_hight(data->tree) + 1;
+	dic = dictionary_malloc(columns, data);
+	generate_dictionary(dic, data->tree, "", columns);
 	return (dic);
 }

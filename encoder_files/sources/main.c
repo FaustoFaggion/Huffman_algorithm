@@ -52,7 +52,7 @@ int main (int argc, char *argv[])
 	data.tree = create_huffman_tree(&(data.leafs));
 
 	/*MAKE A DICTIONARY O CODE-WORDS BY TRAVESSING THE TREE*/
-	data.dictionary = make_dictionary(data.tree);
+	data.dictionary = make_dictionary(&data);
 	
 	/*TRANSLATE THE RECEIVED DATA TRAVESSING THE BINARY TREE TO CREATE A CODE-DATA*/
 	data.n_bits_compressed = encoder(&data, argc, argv);

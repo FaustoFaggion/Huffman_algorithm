@@ -66,7 +66,7 @@ void	create_list(t_data *data);
 
 node	*create_huffman_tree(t_list *leafs);
 
-char	**make_dictionary(node *tree);
+char	**make_dictionary(t_data *data);
 
 int		encoder(t_data *data, int argc, char *argv[]);
 
